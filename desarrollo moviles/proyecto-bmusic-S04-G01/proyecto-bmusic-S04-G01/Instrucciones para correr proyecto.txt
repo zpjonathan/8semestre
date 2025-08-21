@@ -1,0 +1,20 @@
+---- Instrucciones para Ejecutar el proyecto ----
+
+
+- Abrir el proyecto bmusic con Visual Studio Code
+- Abrir la consola de Visual Studio Code
+- Ejecutar el comando: npm install
+
+El proyecto estará listo, todas las librerías de node_modules
+se habrán descargado con el comando anterior.
+
+Para Visualizar App del proyecto:
+- Ejecutar el comando: npx expo start
+- Conectar un dispositivo en la misma red del PC.
+- Abrir app Expo Go y escanear el Code QR que aparece en consola.
+SI SE USA EL EMULADOR
+- abrir emulador primeramente para evitar errores
+- luego en vs-code ejecutar: npx expo start --android
+
+Con estos pasos se podrá visualizar la app en el dispositivo correctamente.
+------------------------------------------------------

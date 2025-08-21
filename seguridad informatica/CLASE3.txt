@@ -1,0 +1,126 @@
+ criptografia
+__________________________________________
+ infraestructura se  llave publica: consite en una serie de  tecnologia y politicas
+para la creacion
+
+llave privada: sistema de cifrado asimetrico utilizado para generar  y
+validar  certificados atraves de autoridades certificadora
+----------------------------------------------------------
+CUSTODIA DE  CLAVES 
+key sdcrow:  ocurre cuando la autoridad certificadora mantiene  una copia
+llave privada de un usuario. no es una solucion muy favorable
+
+----------------------
+programas para criptografia
+ssh-keygen
+-------------------------
+adaptador solo anfitrion
+ir red--
+conecta a  ---- nat
+reenvio de puertos---- dar a +
+llenar los campos---
+
+* puerto 22---------- para ssh(autentificacion)
+
+---------------------------------------------------------
+CIFRADO
+permite codificar la informacion de tal forma que no sea entendible
+ el preoceso de cifrado esta basado en dos principios 
+confusion: el texto planop debe ser cambiado significativamente
+en el texto cifrado 
+
+DIfusion: si el textoplano es cambiado, sin importar que tan pequeño
+sea el cambio, debe cambiar al menos la itad del texto cifrado resultado
+-------------------------------------------------------
+NIVELES DE CIFRADO
+ dico completo: si el disco es  robado o accedido por alguienno debido
+programa-----------bitlocker
+particion: si solo se quiere cifrar  una parte de  disco
+
+ volumenes:para el cifrado de particion, con
+la diferencia que funcione a nivel del sistema de archivos
+
+archivos: cifrada solo un archivo
+base de datos:
+----------------------------------
+CONCEPTOS DE ALGORITMOS CRIPTOGRAFICOS
+utilizan para cifrar informacion dependiendo del tipo, puede utilizar llavex predefinidad 
+o matematcamnete
+SE BASE EN:
+fuerza de llave: depende de la antropia de la llave,osea que tan unica es
+expancion de llave: que tan larga seria la llave generada
+INTERCAMBIO DE LLAVE:
+la llave debe ser transmitida en cierta forma
+
+SEGUN EL TIPO:
+SIMETRICO:
+ASIMETRICO:
+
+--------------------------------
+HERRAMIENTAS PARA CIFRADO
+ modulo de plataforma confiable: chip inscrustado que provee almacenamiento
+de llave,contraseña y certificado digitales
+
+modulo de seguridad de hardware(hsm): usado para almacenar claves y evitar que sean
+corrrompido.son extraibles  adiferencia de los tpm que son incrustado
+
+sistema de gestiob de claves: sofware utilizado para almacenar llaves 
+privadas de un sistemas(mal necesario)
+
+enclave seguro:
+------------------------------------------------------------
+OFUSCACION: sirve solo para ocultar inforamcion  no lo encripta-
+TIPOS:
+tokenizacion: asifna un valor sustituto aleatorio sin relacion matematica
+permanece enlazado
+
+enmascarmiento: remueve informacion personal o sensible, pero mantiene
+informacion usable ideal para ambiente de desarrollo
+
+redaccion: se sustituyen caracteres de los datos  por un caracter 
+cualquiera como(*) con el fin de ocultar informacion
+
+estenografia:  involucra esconder mensaje para que personas ajenas no sepan
+que hay un mensaje a simple vista,se esconde en un archivo de audio,video
+imagenes u otro,utilizando bits que no afewcta mucho el archivo original
+-----------------------------------------------------
+HASH Y SALTING
+hash:  es u resumen generado por una regla automatico y algoritmo atulizado
+ como huella digital
+salting: dato añadido a un valor para que el hast compuatdo sea completamente distinto
+sirve como medida de seguridad
+-----------------------------------------------------
+FIRMAS DEIGITALES:
+recurso para proveer integridad y autentificacion ya que 
+se utiliza la llave privada del emisor y la llave publica
+del receptor para firmar el mensaje o archivo
+proveen no repudio
+-------------------------------------------------------
+BLOCKCHAIN
+sistema para gestionar transacciones compartidad en una misma red.dichas
+trancaciones estan agrupadas en bloques 
+-------------------------------------------------------
+LIBRO CONTABLE DE ACCESO PUBLICO(OPEN PUBLIC LEDGER)
+son lista de transacciones  realizadas en una red.este libro son 
+desentralizado 
+---------------------------------------------
+CERTIFICADO DIGITAL
+bloque de datos firmado digitalmente,el cual permite utilizar criptografia 
+de llaves publicxas, se utiliza en la web
+
+ELEMENTOS RELACIONADOS:
+autoridad certificado:
+lista de revocaicon  de certifixaso
+protocolo de estado de certificado en linea
+certificado autofirmado----- entorno de desarrollo
+
+--------------------------
+certificado comodin
+sslscan  dominio-------en Kali
+
+
+
+
+
+
+

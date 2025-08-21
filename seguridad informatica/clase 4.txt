@@ -1,0 +1,9 @@
+PRACTICA
+--------------------------------------------------------
+hashin y salting
+
+
+sin sal
+008c70392e3abfbd0fa47bbc2ed96aa99bd49e159727fcba0f2e6abeb3a9d601
+ con salt
+76e495d8fd692e110ef241738d9d061d3119d192be1da9907235e1b3e9e6270c

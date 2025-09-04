@@ -1,0 +1,109 @@
+ INSTALACION  DE ENTORNO  PARA APLICAICONES MOVILES
+_________________________________________________
+si power shell tine politicas de restriciones
+ en powershell
+Get-ExecutionPolicy-------------------> verifica la politica actual
+Set-ExecutionPolicy RemoteSigned---------> cambia la politica actual (permite la ejecucion de scrip no confiables)
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process------> si no se quiere cambiar las politicas globales 
+                                                                       solo para el proceso actual
+
+PAQUETES PARA EL PROYECTO
+__________________________
+
+ npx create-expo-app@latest MiPrimeraApp
+ npm install -g expo-cli-----------------> instalar
+ npx expo start
+ npx expo install react-native-screens react-native-safe-area-context react-native-gesture-handler react-native-reanimated react-native-get-random-values
+
+  npminstall @react-navigation/native-stack
+
+ como queadia los paquetes
+
+mi proyecto
+assets
+nodemodule
+git ignore
+app.js
+app.json
+
+
+
+
+
+
+ Navegar al proyecto
+ • cd MiPrimeraApp
+
+
+
+
+ VERSIONES DE NPM
+___________________
+npm uninstall react-native------------> para desintalar
+npm install react-native@0.79.5----------> instalar alguna version
+npm list react-native------------------> para ver la lista de  las versiones de paquetes
+
+EN LA APP
+______________
+ Cambio en package.json
+ De: "main": "expo-router/entry"
+ A:  "main": "node_modules/expo/AppEntry.js"
+
+---------------------------------------------------------------------------------------------- 
+INSTALACION Y NAVEGACION MINIMA  ENTRE PANTALLAS (STACK)
+
+REACT  NAVIGATOR: es la librería estándar en React Native que gestiona el 
+flujo entre pantallas, ofreciendo diferentes tipos de navegación (stack, 
+tabs, drawer) con animaciones y gestos nativos para crear experiencias 
+móviles profesionales.
+
+ Stack Navigator → Pantallas apiladas, con 
+transiciones de ir y volver (como páginas en 
+un navegador web)
+
+ Tab Navigator → Navegación por pestañas en 
+la parte inferior o superior
+
+ Drawer Navigator → Menú lateral 
+desplegable
+
+npm install @react-navigation/native--------> instala  las librerias anteriores
+
+npx expo install react-native-screens react-native-safe-area-context react-native-gesture-handler react-native-reanimated get-random-values
+
+ npm install @react-navigation/native-stack
+-------------------------------------------------------------------------------------------------
+EXTENCIONES EN VISULA STUDIO CODE
+______________________________
+vs code icon--------------> para iconos de carpetas
+
+-----------------------------------
+OTRAS LIBRERIAS DE EJEMPLO
+___________________________
+ expo install @expo/vector-icons
+
+
+
+import { StyleSheet, Text, View } from 'react-native';
+
+export default function App() {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>Hola Mundo</Text>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1, // ocupa toda la pantalla
+    backgroundColor: '#add8e6', // azul claro
+    justifyContent: 'center',   // centra verticalmente
+    alignItems: 'center',       // centra horizontalmente
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#333',
+  },
+});

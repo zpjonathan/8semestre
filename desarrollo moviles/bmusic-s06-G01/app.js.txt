@@ -1,0 +1,118 @@
+import { MaterialIcons } from '@expo/vector-icons';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'; //nuevo
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Text, TouchableOpacity, View } from 'react-native';
+
+// import local screens
+import GenresScreen from './src/screens/GenerosScreen';
+import HomeScreen from './src/screens/HomeScreen';
+import PlayListDetailScreen from './src/screens/PlayListDetailScreen';
+import ProfileScreen from './src/screens/ProfileScreen';
+import SongDetailScreen from './src/screens/SongDetailScreen';
+
+const Drawer = createDrawerNavigator();
+const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();//nuevo
+
+const openDrawer = ({navigation}) => {
+    return(
+        <TouchableOpacity onPress={()=> navigation.openDrawer()}>
+            <MaterialIcons name='menu' size={25} color={"blue"}/>
+        </TouchableOpacity>
+        
+    )
+}
+
+// function HomeScreen({ navigation }) {
+//     return (
+//         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+//             <Text>Pantalla Home</Text>
+//             <Button title="Iniciar" onPress={() => navigation.replace('Principal')} />
+//         </View>
+//     );
+// }
+
+function SettingScreen() {
+    return (
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <Text>Pantalla de Configuracion</Text>
+        </View>
+    );
+}
+
+c
+
+// function GenresScreen() {//nueva: Pegar debajo de ProfileScreen
+//     return (
+//         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+//             <Text>Pantalla Géneros</Text>
+//         </View>
+//     );
+// }
+
+function StackNavigator({navigation}) {
+    return (
+        <Stack.Navigator>
+            <Stack.Screen name="Perfil" component={ProfileScreen} 
+               options={{
+                headerLeft: (() => (openDrawer({navigation})))
+               }}
+            />
+            <Stack.Screen name="DetallePlayList" component={PlayListDetailScreen} />
+            <Stack.Screen name="SongDetailScreen" component={SongDetailScreen} />
+        </Stack.Navigator>
+    );
+}
+
+function TabNavigator({navigation}) {//nueva: Pegar debajo de StackNavigator
+    return (
+        <Tab.Navigator
+           screenOptions={{//defininiendo colores para cuando el tab esté activo o inactivo
+            tabBarActiveTintColor: 'blue',
+            tabBarInactiveTintColor: 'gray',
+           }}
+        >
+            <Tab.Screen name="Homes" component={StackNavigator}
+               options={{
+                headerShown: false,
+                tabBarIcon: ({color}) => (<MaterialIcons name='home' size={25} color={color}/>)
+                }}
+            />
+            <Tab.Screen name="Genres" component={GenresScreen} 
+              options={{
+                headerLeft: (() => (openDrawer({navigation})))
+               }}
+            />
+        </Tab.Navigator>
+    );
+}
+
+function DrawerNavigation({ navigation }) { //Extraje el Drawer de App.js
+    return (
+        <Drawer.Navigator>
+            <Drawer.Screen name="Inicio" component={TabNavigator}
+                options={{ headerShown: false }}
+            />
+            <Drawer.Screen name="Config" component={SettingScreen}
+                options={{
+                    // headerShown: false,
+                    drawerIcon: ({ color }) => (<MaterialIcons name='settings' size={25} color={color} />)
+                }}
+            />
+        </Drawer.Navigator>
+    )
+}
+
+export default function App() {//Agregué un Stack general, que contiene al Drawer y un simple Main
+    return (
+        <NavigationContainer>
+            <Stack.Navigator screenOptions={{headerShown: false}}>
+                <Stack.Screen name='MainApp' component={HomeScreen} />
+                <Stack.Screen name='Principal' component={DrawerNavigation} />
+            </Stack.Navigator>
+        </NavigationContainer>
+    );
+}
+

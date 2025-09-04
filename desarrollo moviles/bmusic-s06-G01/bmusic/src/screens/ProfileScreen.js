@@ -1,0 +1,284 @@
+import { useState } from 'react';
+
+import { Dimensions, FlatList, Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+
+const { width, height } = Dimensions.get('window');
+
+console.log(width, height);
+
+export default function profileScreen({navigation}){
+
+    // estado de React
+    const [userName, setUserName] = useState("MicJ025");
+
+    //array 
+    const myPlayList = [
+        {
+            id: 1,
+            value: "Musica Pop",
+            canciones: [
+                { idSong: 1, valSong: "Pop Beauty Song" },
+                { idSong: 2, valSong: "Shiny Lights" },
+                { idSong: 3, valSong: "Dancing in the Night" },
+                { idSong: 4, valSong: "Pop Another Dream" }
+            ]
+        },
+        {
+            id: 2,
+            value: "Rock Music",
+            canciones: [
+                { idSong: 1, valSong: "Highway of Fire" },
+                { idSong: 2, valSong: "Broken Guitar" },
+                { idSong: 3, valSong: "Wild Thunder" },
+                { idSong: 4, valSong: "Echoes of Rock" }
+            ]
+        },
+        {
+            id: 3,
+            value: "Musica para los Domingos",
+            canciones: [
+                { idSong: 1, valSong: "Morning Coffee" },
+                { idSong: 2, valSong: "Lazy Afternoon" },
+                { idSong: 3, valSong: "Sunset Stroll" },
+                { idSong: 4, valSong: "Peaceful Mind" }
+            ]
+        },
+        {
+            id: 4,
+            value: "Musica para Programar",
+            canciones: [
+                { idSong: 1, valSong: "Code Flow" },
+                { idSong: 2, valSong: "Debug Dreams" },
+                { idSong: 3, valSong: "Midnight Keyboard" },
+                { idSong: 4, valSong: "Loop Forever" }
+            ]
+        },
+        {
+            id: 5,
+            value: "Sport Music",
+            canciones: [
+                { idSong: 1, valSong: "Energy Pulse" },
+                { idSong: 2, valSong: "Run Harder" },
+                { idSong: 3, valSong: "Beast Mode" },
+                { idSong: 4, valSong: "Final Sprint" }
+            ]
+        },
+        {
+            id: 6,
+            value: "Chill Vibes",
+            canciones: [
+                { idSong: 1, valSong: "Ocean Breeze" },
+                { idSong: 2, valSong: "Lo-Fi Sunset" },
+                { idSong: 3, valSong: "Cloud Drift" },
+                { idSong: 4, valSong: "Soft Rain" }
+            ]
+        },
+        {
+            id: 7,
+            value: "Reggaeton Party",
+            canciones: [
+                { idSong: 1, valSong: "Fiesta de Noche" },
+                { idSong: 2, valSong: "Perreo Intenso" },
+                { idSong: 3, valSong: "Calor del Barrio" },
+                { idSong: 4, valSong: "Baila Sin Parar" }
+            ]
+        },
+        {
+            id: 8,
+            value: "Jazz Relax",
+            canciones: [
+                { idSong: 1, valSong: "Smooth Sax" },
+                { idSong: 2, valSong: "Piano Dreams" },
+                { idSong: 3, valSong: "Night in Blue" },
+                { idSong: 4, valSong: "Mellow Flow" }
+            ]
+        },
+        {
+            id: 9,
+            value: "Musica Romántica",
+            canciones: [
+                { idSong: 1, valSong: "Eternal Love" },
+                { idSong: 2, valSong: "Solo Contigo" },
+                { idSong: 3, valSong: "Besos en la Lluvia" },
+                { idSong: 4, valSong: "Corazón Sincero" }
+            ]
+        },
+        {
+            id: 10,
+            value: "Musica de Viaje",
+            canciones: [
+                { idSong: 1, valSong: "On the Road" },
+                { idSong: 2, valSong: "Skyline Ride" },
+                { idSong: 3, valSong: "Kilometers Away" },
+                { idSong: 4, valSong: "Freedom Wheels" }
+            ]
+        }
+    ];
+
+    //variable 
+    const name = "MichaelJackson";
+    
+    //funciones
+    function ChangeName(){
+        // alert("Nuevo nombre")
+        setUserName(name)
+    }
+    const goToDetalles = ({item}) =>{
+        // alert(item.value);
+        navigation.navigate("DetallePlayList", {
+            id: item.id,
+            value: item.value,
+            songs: item.canciones,
+        })
+    }
+
+    return(
+        <SafeAreaView style={styles.container}>
+            <View style={styles.card}>
+                <View style={styles.box2}>
+                    <View style={styles.viewImg}>
+                        <Image
+                        // source={require('./assets/images/j0432621_400x400.png')}
+                        source={{uri: 'https://cdn.shortpixel.ai/spai/q_glossy+ret_img+to_auto/www.slantmagazine.com/wp-content/uploads/2023/08/michaeljackson.jpg'}}
+                        style={{ width: 100, height: 100 }}
+                    />
+                    </View>
+                    <View style={{marginLeft: 10}}>
+                        <Text style={styles.txtUser}>{userName}</Text>
+                        <Text ><Text style={{fontWeight: 'bold'}}>100k</Text> Seguidores - Siguiendo 43</Text>
+                    </View>
+                    
+                </View>
+                <TouchableOpacity
+                onPress={() => ChangeName()} 
+                style={styles.btn}>
+                    <Text style={styles.txtBtn}>Editar Perfil</Text>
+                </TouchableOpacity>
+
+               
+            </View>
+
+            <View style={styles.viewPlayL}>
+                 <Text style={styles.titlePlayList}>PlayLists</Text>
+                 {/* <ScrollView>
+                    {
+                        myPlayList.map((item, index)=> (
+                                <Text style={{fontSize: 19}}
+                                key={index}>{item.value}</Text>
+                        ))
+                    }
+                 </ScrollView> */}
+                 
+                 <FlatList
+                    data={myPlayList}
+                    renderItem={({item})=>(
+                        <TouchableOpacity 
+                           onPress={() => goToDetalles({item})}
+                           style={styles.itemList}
+                        >
+                            <Text style={styles.txtItemList}>{item.value}</Text>
+                        </TouchableOpacity>
+                    )}
+                    keyExtractor={(item, index) => item.id.toString()}
+                 />                 
+               </View>
+
+        </SafeAreaView>
+    )
+}
+
+//estilos
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        // alignItems: 'center',
+        // borderWidth: 16,
+        // borderColor: 'green'
+    },
+    card:{
+        alignSelf: 'center',
+        borderWidth: 0.5,
+        borderColor: '#ecf0edff',
+        marginTop: 30,
+        // width: '90%',
+        // height: '40%',
+        width: width*0.9,
+        height: height*0.3,
+        backgroundColor: '#FFFFFF',
+        elevation: 5,
+        shadowColor: '#000',
+        borderRadius: 5,
+        overflow: 'hidden',
+        margin: 10,
+        padding: 10
+
+    },
+    box2: {
+        flexDirection: 'row',
+        // borderWidth: 5,
+        // borderColor: '#aa0f0fff',
+        // width: '70%',
+        // height: '20%',
+        padding: 7,
+        marginTop: 10,
+        marginLeft: 12
+        
+    },
+    viewImg:{
+        borderWidth:2,
+        borderRadius: 50,
+        overflow: 'hidden',
+        borderColor: '#13099cff'
+    },
+    txtUser:{
+        fontSize: 25,
+        fontWeight: '600',
+        marginLeft: 10,
+        marginTop: 15,
+        color: '#4c4f56'
+    },
+    btn: {
+        // flex: 1,
+        borderWidth: 2,
+        borderColor: 'blue',
+        backgroundColor: 'darkblue',
+        width: 125,
+        height: 45,
+        borderRadius: 10,
+        marginTop: 10,
+        marginLeft: 10,
+        justifyContent: 'center'
+    },
+    txtBtn:{
+        fontSize: 17,
+        color: 'white',
+        textAlign: 'center'
+    },
+    viewPlayL:{
+        flex: 1,
+        // borderWidth: 1,
+        // borderColor: 'green',
+        marginTop: 10,
+        marginBottom: 5,
+        // margin: 10,
+        // height: 100,
+    },
+    titlePlayList:{
+        fontSize: 30,
+        fontWeight: '500',
+        marginLeft: 10,
+        marginTop: 15,
+        color: '#24b946'
+    },
+    itemList: {
+        margin: 6,
+        padding: 8,
+        width: '90%',
+        backgroundColor: '#ffffff',
+        elevation: 2,
+
+    },
+    txtItemList: {
+        fontSize: 17
+    }
+})
